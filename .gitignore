@@ -30,6 +30,9 @@ node_modules/
 output/
 output.tar.gz
 
+src/common/config/config.js
+src/common/config/database.js
+
 runtime/
 app/
 
