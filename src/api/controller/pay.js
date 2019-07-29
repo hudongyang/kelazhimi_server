@@ -48,10 +48,11 @@ module.exports = class extends Base {
       return `<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[订单不存在]]></return_msg></xml>`;
     }
 
-    if (orderModel.updatePayStatus(orderInfo.id, 2)) {
-    } else {
-      return `<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[订单不存在]]></return_msg></xml>`;
-    }
+    await orderModel.updatePayStatus(orderInfo.id, 2)
+    // if () {
+    // } else {
+    //   return `<xml><return_code><![CDATA[FAIL]]></return_code><return_msg><![CDATA[订单不存在]]></return_msg></xml>`;
+    // }
 
     return `<xml><return_code><![CDATA[SUCCESS]]></return_code><return_msg><![CDATA[OK]]></return_msg></xml>`;
   }
