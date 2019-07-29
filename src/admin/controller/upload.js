@@ -7,15 +7,19 @@ module.exports = class extends Base {
     if (think.isEmpty(brandFile)) {
       return this.fail('保存失败');
     }
-    const that = this;
-    const filename = '/static/upload/brand/' + think.uuid(32) + '.jpg';
+
+    const filename = think.uuid(32) + '.jpg';
+    const uploadFolder = `${think.ROOT_PATH}/www/static/upload/brand/`
+
+    think.mkdir(uploadFolder)
+
     const is = fs.createReadStream(brandFile.path);
-    const os = fs.createWriteStream(think.ROOT_PATH + '/www' + filename);
+    const os = fs.createWriteStream(`${uploadFolder}${filename}`);
     is.pipe(os);
 
-    return that.success({
+    return this.success({
       name: 'brand_pic',
-      fileUrl: 'http://127.0.0.1:8360' + filename
+      fileUrl: 'http://127.0.0.1:8360/static/upload/brand/' + filename
     });
   }
 

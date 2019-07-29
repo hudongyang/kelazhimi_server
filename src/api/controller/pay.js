@@ -30,6 +30,7 @@ module.exports = class extends Base {
       });
       return this.success(returnParams);
     } catch (err) {
+      console.log(err);
       return this.fail('微信支付失败');
     }
   }

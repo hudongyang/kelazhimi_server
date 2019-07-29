@@ -6,6 +6,7 @@ module.exports = class extends Base {
     const password = this.post('password');
 
     const admin = await this.model('admin').where({ username: username }).find();
+    console.log(admin);
     if (think.isEmpty(admin)) {
       return this.fail(401, '用户名或密码不正确1');
     }
